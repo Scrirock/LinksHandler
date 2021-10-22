@@ -13,6 +13,7 @@
         }
     ],
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+        "muffeen/url-status": "^0.2.0"
   }
 }

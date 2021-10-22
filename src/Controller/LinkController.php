@@ -6,6 +6,7 @@ use Scrirock\Links\Controller\Traits\RenderViewTrait;
 use Scrirock\Links\Entity\Link;
 use Scrirock\Links\Manager\DB;
 use Scrirock\Links\Manager\LinkManager;
+use Muffeen\UrlStatus\UrlStatus;
 
 class LinkController {
 
@@ -22,8 +23,10 @@ class LinkController {
             $title = $db->sanitize($fields['title']);
             $target = $db->sanitize($fields['target']);
 
+            $url_status = UrlStatus::get($fields['link']);
             $linkObject = new Link($link, $title, $target);
-            (new LinkManager())->addLink($linkObject);
+            if($url_status->getStatusCode() === 200) (new LinkManager())->addLink($linkObject);
+
         }
 
         $this->render('add.link', "Ajouter un lien");
@@ -43,7 +46,8 @@ class LinkController {
             $id = $db->sanitize($rawId);
 
             $linkObject = new Link($link, $title, $target, $id);
-            (new LinkManager())->modifyLink($linkObject);
+            $url_status = UrlStatus::get($fields['link']);
+            if($url_status->getStatusCode() === 200) (new LinkManager())->modifyLink($linkObject);
         }
 
         $this->render('modify.link', "Modifier un lien", [
