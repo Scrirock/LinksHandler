@@ -9,6 +9,6 @@
             <input type="password" id="password" name="password">
         </div>
         <div id="inputSubmit"><input type="submit" value="Se connecter" id="validate"></div>
-<!--        <div><a href="?controller=addUser" id="inscription">Pas encore inscrit ?</a></div>-->
+        <div><a href="?controller=addUser" id="inscription">Pas encore inscrit ?</a></div>
     </form>
 </div>
