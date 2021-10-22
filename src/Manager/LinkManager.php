@@ -81,4 +81,11 @@ class LinkManager{
         header("Location: /");
     }
 
+    public function getOneLink($rawId){
+        $request = DB::getRepresentative()->prepare("SELECT * FROM prefix_link WHERE id = :id");
+        $request->bindParam(":id", $rawId);
+        $request->execute();
+        return $request->fetch();
+    }
+
 }

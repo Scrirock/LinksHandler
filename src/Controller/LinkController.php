@@ -46,7 +46,9 @@ class LinkController {
             (new LinkManager())->modifyLink($linkObject);
         }
 
-        $this->render('modify.link', "Modifier un lien");
+        $this->render('modify.link', "Modifier un lien", [
+            'link' => (new LinkManager())->getOneLink($rawId)
+        ]);
     }
 
     public function delete($id){
