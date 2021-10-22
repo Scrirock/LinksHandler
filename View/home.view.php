@@ -1,11 +1,6 @@
 <div id="containerHomePage">
 
     <?php
-    use Muffeen\UrlStatus\UrlStatus;
-
-    $url_status = UrlStatus::get('https://packagist.org');
-    echo gettype($url_status->getStatusCode()) . "<br>";
-    echo $url_status->getStatusCode();
         if (isset($var['link'])){
             foreach ($var['link'] as $link){ ?>
                 <div class="oneLink">
