@@ -13,6 +13,7 @@
 
     <?= $html ?>
 
+<?php include "../View/_partials/footer.view.php"?>
 <script src="./Asset/js/app.js" type="module"></script>
 </body>
 </html>

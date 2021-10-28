@@ -30,6 +30,9 @@ if(isset($_GET['controller'])) {
         case 'deleteLink':
             (new LinkController())->delete($_GET['id']);
             break;
+        case 'contactForm':
+            (new PageController())->contactForm();
+            break;
     }
 }
 else {

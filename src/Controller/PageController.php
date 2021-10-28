@@ -18,4 +18,8 @@ class PageController {
         ]);
     }
 
+    public function contactForm(){
+        $this->render('contact', 'Contact');
+    }
+
 }
