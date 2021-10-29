@@ -13,13 +13,17 @@ class PageController {
      * Show the home page
      */
     public function homePage() {
-        $this->render('home', 'Accueil', [
-            'link' => (new LinkManager())->getLink()
-        ]);
+        $this->render('home', 'Accueil');
     }
 
     public function contactForm(){
         $this->render('contact', 'Contact');
+    }
+
+    public function deco(){
+        session_destroy();
+        session_start();
+        header('Location: /');
     }
 
 }

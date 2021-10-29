@@ -25,7 +25,7 @@ class LinkController {
 
             $url_status = UrlStatus::get($fields['link']);
             $linkObject = new Link($link, $title, $target);
-            if($url_status->getStatusCode() === 200) (new LinkManager())->addLink($linkObject);
+            if($url_status->getStatusCode() === 200) (new LinkManager())->addLink($linkObject, $_SESSION['mail']);
 
         }
 

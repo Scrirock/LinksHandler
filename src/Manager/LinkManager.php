@@ -11,16 +11,17 @@ class LinkManager{
      * Add a user into the database
      * @param Link $linkObject
      */
-    public function addLink(Link $linkObject){
+    public function addLink(Link $linkObject, $user){
         $request = DB::getRepresentative()->prepare("
-        INSERT INTO prefix_link (href, title, target, name)
-            VALUES (:link, :title, :target, :name)
+        INSERT INTO prefix_link (fk_user, href, title, target, name)
+            VALUES (:fk_user, :link, :title, :target, :name)
         ");
 
         $link = $linkObject->getLink();
         $title = $linkObject->getTitle();
         $target = $linkObject->getTarget();
 
+        $request->bindParam(":fk_user", $user);
         $request->bindParam(":link", $link);
         $request->bindParam(":title", $title);
         $request->bindParam(":target", $target);

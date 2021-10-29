@@ -5,14 +5,16 @@ namespace Scrirock\Links\Manager;
 
 use Scrirock\Links\Entity\User;
 
-class UserManager{
+class UserManager
+{
 
     /**
      * Add a user into the database
      * @param User $user
      */
-    public function addUser(User $user){
-        if ($this->checkUserMail($user->getMail())){
+    public function addUser(User $user)
+    {
+        if ($this->checkUserMail($user->getMail())) {
             $request = DB::getRepresentative()->prepare("
             INSERT INTO prefix_user (nom, prenom, mail, pass)
                 VALUES (:firstName, :lastName, :mail, :pass)
@@ -27,15 +29,13 @@ class UserManager{
             $request->bindParam(":lastName", $lastName);
             $request->bindParam(":mail", $mail);
             $request->bindParam(":pass", $password);
-            if ($request->execute()){
+            if ($request->execute()) {
                 header("Location: /");
-            }
-            else{
+            } else {
                 $_SESSION["error?"] = "Une erreur est survenu, veuillez réessayer";
                 header("Location: ?controller=addUser");
             }
-        }
-        else{
+        } else {
             $_SESSION["error?"] = "Ce mail est deja prit";
             header("Location: ?controller=addUser");
         }
@@ -47,14 +47,15 @@ class UserManager{
      * @param null $id
      * @return bool
      */
-    public function checkUserMail($mail, $id = null): bool{
+    public function checkUserMail($mail, $id = null): bool
+    {
         $request = DB::getRepresentative()->prepare("SELECT id, mail FROM prefix_user");
         $request->execute();
         $check = true;
 
         $userData = $request->fetchAll();
-        foreach ($userData as $username){
-            if ($username['mail'] === $mail && $username['id'] != $id){
+        foreach ($userData as $username) {
+            if ($username['mail'] === $mail && $username['id'] != $id) {
                 $check = false;
             }
         }
@@ -67,21 +68,27 @@ class UserManager{
      * @param $password
      * @return bool
      */
-    public function checkUser($mail, $password): bool{
+    public function checkUser($mail, $password): bool
+    {
         $request = DB::getRepresentative()->prepare("SELECT * FROM prefix_user WHERE mail = :mail");
         $request->bindValue(':mail', $mail);
 
-        if($request->execute()) {
+        if ($request->execute()) {
             $userData = $request->fetch();
-            if(password_verify($password, $userData["pass"])) {
+            if (password_verify($password, $userData["pass"])) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
-        }
-        else {
+        } else {
             return false;
         }
+    }
+
+    public function getUserByMail($mail)
+    {
+        $request = DB::getRepresentative()->prepare("SELECT * FROM prefix_user WHERE mail = :mail");
+        $request->bindValue(':mail', $mail);
+        if ($request->execute()) return $request->fetch();
     }
 }

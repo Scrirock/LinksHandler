@@ -33,6 +33,9 @@ if(isset($_GET['controller'])) {
         case 'contactForm':
             (new PageController())->contactForm();
             break;
+        case 'deco':
+            (new PageController())->deco();
+            break;
     }
 }
 else {

@@ -58,3 +58,10 @@ a{
 h1{
     text-align: center;
 }
+
+.buttonMenu{
+    margin: 2rem;
+    padding: 2rem;
+    border: 1px solid blue;
+}
+
