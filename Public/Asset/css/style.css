@@ -20,6 +20,9 @@ nav, .icon{
 
 nav i{
     font-size: 5rem;
+    margin: 1rem;
+    color: blue;
+    cursor: pointer;
 }
 
 a{
@@ -65,3 +68,23 @@ h1{
     border: 1px solid blue;
 }
 
+.delButton{
+    color: red;
+    cursor: pointer;
+}
+
+.editButton{
+    color: blue;
+    cursor: pointer;
+}
+
+#containerEdit{
+    margin: 2rem;
+}
+
+#divEdit, #divAdd{
+    display: inline-block;
+    padding: 1.5rem;
+    border: 1px solid black;
+    cursor: pointer;
+}

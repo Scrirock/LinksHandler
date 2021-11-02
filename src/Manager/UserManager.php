@@ -85,8 +85,7 @@ class UserManager
         }
     }
 
-    public function getUserByMail($mail)
-    {
+    public function getUserByMail($mail){
         $request = DB::getRepresentative()->prepare("SELECT * FROM prefix_user WHERE mail = :mail");
         $request->bindValue(':mail', $mail);
         if ($request->execute()) return $request->fetch();

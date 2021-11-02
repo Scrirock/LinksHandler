@@ -1,7 +1,7 @@
 <nav>
     <?php
         if (isset($_SESSION['mail'])){?>
-            <a href="?controller=addLink"><i class="fas fa-plus-square"></i>Ajouter un lien</a>
+            <i class="fas fa-plus-square" id="addButton"></i>
             <a href="?controller=deco" class="buttonMenu">Se déconnecter</a>
         <?php }
         else{ ?>

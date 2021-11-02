@@ -14,6 +14,7 @@
     ],
   "require": {
     "ext-pdo": "*",
-        "muffeen/url-status": "^0.2.0"
+        "muffeen/url-status": "^0.2.0",
+    "ext-json": "*"
   }
 }

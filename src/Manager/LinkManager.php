@@ -10,6 +10,7 @@ class LinkManager{
     /**
      * Add a user into the database
      * @param Link $linkObject
+     * @param $user
      */
     public function addLink(Link $linkObject, $user){
         $request = DB::getRepresentative()->prepare("
@@ -79,7 +80,6 @@ class LinkManager{
         $request = DB::getRepresentative()->prepare("DELETE FROM prefix_link WHERE id = :id");
         $request->bindParam(":id", $id);
         $request->execute();
-        header("Location: /");
     }
 
     public function getOneLink($rawId){
@@ -87,6 +87,14 @@ class LinkManager{
         $request->bindParam(":id", $rawId);
         $request->execute();
         return $request->fetch();
+    }
+
+    public function checkUserFk($user, $linkId): bool{
+        $request = DB::getRepresentative()->prepare("SELECT * FROM prefix_link WHERE id = :id");
+        $request->bindParam(":id", $linkId);
+        $request->execute();
+        $data = $request->fetch();
+        return $data['fk_user'] === $user;
     }
 
 }
