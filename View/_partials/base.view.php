@@ -1,3 +1,8 @@
+<?php
+
+use Scrirock\Links\Manager\UserManager;
+
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -10,6 +15,7 @@
 </head>
 <body>
 <?php include "../View/_partials/menu.view.php"?>
+<input type="hidden" id="userId" value="<?= (new UserManager())->getUserByMail($_SESSION['mail'])['id'] ?>">
 
     <?= $html ?>
 

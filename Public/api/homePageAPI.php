@@ -65,7 +65,10 @@ switch ($_SERVER['REQUEST_METHOD']){
             $message = $_POST['message'];
             $headers = 'From: '.$_SESSION['mail'];
 
-            //mail($to, $subject, $message, $headers);
+            mail($to, $subject, $message, $headers);
+        }
+        if (isset($_POST['linkId'])){
+            $manager->addOne($_POST['linkId']);
         }
         break;
 }
@@ -82,7 +85,8 @@ function getLinks(LinkManager $manager): string {
             'title' => $link["title"],
             'target' => $link["target"],
             'name' => $link["name"],
-            'id' => $link["id"]
+            'id' => $link["id"],
+            'timeClicked' => $link["timeClicked"]
         ];
     }
     return json_encode($response);

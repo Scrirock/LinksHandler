@@ -97,4 +97,18 @@ class LinkManager{
         return $data['fk_user'] === $user;
     }
 
+    public function addOne($linkId){
+        $timeClicked = $this->getOneLink($linkId)['timeClicked'];
+        $timeClickedAndOne = $timeClicked + 1;
+
+        $request = DB::getRepresentative()->prepare("
+            UPDATE prefix_link
+            SET timeClicked = :clicked
+            WHERE id = :id
+        ");
+        $request->bindParam(":id", $linkId);
+        $request->bindParam(":clicked", $timeClickedAndOne);
+        $request->execute();
+    }
+
 }

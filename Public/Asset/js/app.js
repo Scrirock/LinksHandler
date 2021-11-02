@@ -1,4 +1,5 @@
 import '../../node_modules/jquery/dist/jquery.js';
+import '../../node_modules/chart.js/dist/chart.js';
 
 function deleteClick() {
     $(document).ready(() => {
@@ -161,10 +162,10 @@ function contactButtonClick() {
     });
 }
 
+const userId = document.querySelector("#userId").value;
 const linkContainer = document.querySelector("#containerHomePage");
 function homePage(){
     if (linkContainer) {
-        const userId = document.querySelector("#userId").value;
         $(document).ready(function () {
             $.ajax({
                 url: '../../api/homePageAPI.php',
@@ -187,7 +188,7 @@ function homePage(){
                                     </div>
                                     <img src="https://decizia.com/blog/wp-content/uploads/2017/06/default-placeholder.png" alt="default image"
                                     width="250px" height="250px">
-                                    <a href="${response[i].href}" class="linkName" title="${response[i].title}" target="<${response[i].target}">${response[i].name}</a>
+                                    <a href="${response[i].href}" data-id="${response[i].id}" class="linkName" title="${response[i].title}" target="<${response[i].target}">${response[i].name}</a>
                                 </div>
                             `;
                         }
@@ -203,3 +204,75 @@ function homePage(){
 homePage();
 contactClick();
 addClick();
+
+setTimeout(()=>{
+    $(document).ready(() => {
+        $(".linkName").click(function (e) {
+            $.ajax({
+                type: "POST",
+                url: '../../api/homePageAPI.php',
+                data: {
+                    linkId: e.target.dataset.id,
+                },
+                dataType: "json"
+            })
+        });
+    });
+}, 100);
+
+$(document).ready(function () {
+    $.ajax({
+        url: '../../api/homePageAPI.php',
+        method: "GET",
+        dataType: "json",
+    })
+        .done(function (response) {
+            let labelArray = [];
+            let dataArray = [];
+
+            for (let i = 0; i < response.length; i++) {
+                if (response[i].user === userId){
+                    labelArray.push(response[i].name);
+                    dataArray.push(response[i].timeClicked);
+                }
+            }
+            console.log(labelArray);
+            console.log(dataArray);
+            let ctx = $('#myChart');
+            let myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labelArray,
+                    datasets: [{
+                        label: '# of Clicks',
+                        data: dataArray,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            display: false
+                        }
+                    }
+                }
+            });
+        })
+});
