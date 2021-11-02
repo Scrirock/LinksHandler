@@ -186,7 +186,7 @@ function homePage(){
                                         <p>${response[i].user}</p>
                                         <i class="far fa-trash-alt delButton" data-id="${response[i].id}"></i>
                                     </div>
-                                    <img src="https://decizia.com/blog/wp-content/uploads/2017/06/default-placeholder.png" alt="default image"
+                                    <img src="${response[i].img}" alt="default image"
                                     width="250px" height="250px">
                                     <a href="${response[i].href}" data-id="${response[i].id}" class="linkName" title="${response[i].title}" target="<${response[i].target}">${response[i].name}</a>
                                 </div>

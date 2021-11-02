@@ -79,6 +79,13 @@ function getLinks(LinkManager $manager): string {
     $data = $manager->getLink();
     foreach($data as $link) {
 
+        $embed_key = 'X4OWrcEVmFHYy0tEF2ITE4jLOrCu';
+        $secret = 'pRkuGtewJmQOrZpmdvdIZNqJFB';
+
+        $query = 'url=' . urlencode($link["href"]);
+
+        $token = md5($query . $secret);
+
         $response[] = [
             'user' => $link["fk_user"],
             'href' => $link["href"],
@@ -86,7 +93,8 @@ function getLinks(LinkManager $manager): string {
             'target' => $link["target"],
             'name' => $link["name"],
             'id' => $link["id"],
-            'timeClicked' => $link["timeClicked"]
+            'timeClicked' => $link["timeClicked"],
+            'img' => "https://api.thumbalizr.com/api/v1/embed/$embed_key/$token/?$query"
         ];
     }
     return json_encode($response);
