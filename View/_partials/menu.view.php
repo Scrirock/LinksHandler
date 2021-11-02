@@ -2,6 +2,7 @@
     <?php
         if (isset($_SESSION['mail'])){?>
             <i class="fas fa-plus-square" id="addButton"></i>
+            <a href="?controller=stats" class="buttonMenu">Statistique</a>
             <a href="?controller=deco" class="buttonMenu">Se déconnecter</a>
         <?php }
         else{ ?>

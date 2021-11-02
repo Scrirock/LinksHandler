@@ -54,7 +54,7 @@ a{
     margin: 5rem;
 }
 
-.connexionForm div{
+.connexionForm div, #footer{
     margin: 2rem;
 }
 
@@ -87,4 +87,13 @@ h1{
     padding: 1.5rem;
     border: 1px solid black;
     cursor: pointer;
+}
+
+#statContainer{
+    margin: 0 2rem;
+}
+
+#graph{
+    width: 400px;
+    height: 400px;
 }

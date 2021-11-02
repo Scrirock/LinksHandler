@@ -16,6 +16,12 @@ class PageController {
         $this->render('home', 'Accueil');
     }
 
+    public function statsPage() {
+        $this->render('stats', 'Statistisque', [
+            'links' => (new LinkManager())->getLink()
+        ]);
+    }
+
     public function contactForm(){
         $this->render('contact', 'Contact');
     }

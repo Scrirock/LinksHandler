@@ -21,20 +21,14 @@ if(isset($_GET['controller'])) {
         case 'addUser':
             (new UserController())->addUser($_POST);
             break;
-        case 'addLink':
-            (new LinkController())->addLink($_POST);
-            break;
-        case 'modifyLink':
-            (new LinkController())->modifyLink($_POST, $_GET['id']);
-            break;
-        case 'deleteLink':
-            (new LinkController())->delete($_GET['id']);
-            break;
         case 'contactForm':
             (new PageController())->contactForm();
             break;
         case 'deco':
             (new PageController())->deco();
+            break;
+        case 'stats':
+            (new PageController())->statsPage();
             break;
     }
 }
