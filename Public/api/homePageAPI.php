@@ -88,11 +88,12 @@ function getLinks(LinkManager $manager): string {
 
         $response[] = [
             'user' => $link["fk_user"],
+            'userName' => $link["nom"],
             'href' => $link["href"],
             'title' => $link["title"],
             'target' => $link["target"],
             'name' => $link["name"],
-            'id' => $link["id"],
+            'id' => $link["linkId"],
             'timeClicked' => $link["timeClicked"],
             'img' => "https://api.thumbalizr.com/api/v1/embed/$embed_key/$token/?$query"
         ];

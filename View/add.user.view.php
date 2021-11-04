@@ -12,23 +12,28 @@ else{
 <h1 class="littleTitle">S'inscrire</h1>
 
 <form action="" method="POST" class="connexionForm">
-    <div>
-        <label for="firstName">Prénom: </label>
-        <input type="text" id="firstName" name="firstName">
-    </div>
-    <div>
-        <label for="lastName">Nom: </label>
-        <input type="text" id="lastName" name="lastName">
-    </div>
-    <div>
-        <label for="mail">Email: </label>
-        <input type="email" id="mail" name="mail">
-    </div>
-    <div>
-        <label for="password">Mot de passe: </label>
-        <input type="password" id="password" name="password">
-    </div>
-    <div>
-        <input type="submit" value="S'inscrire">
+    <div class="card">
+        <div class="card-form">
+            <div class="input">
+                <input type="text" class="input-field" id="firstName" name="firstName" required/>
+                <label class="input-label" for="firstName">Prénom</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" id="lastName" name="lastName" required/>
+                <label class="input-label" for="lastName">Nom</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" id="mail" name="mail" required/>
+                <label class="input-label" for="mail">Email</label>
+            </div>
+            <div class="input">
+                <input type="password" class="input-field" id="password" name="password" required/>
+                <label class="input-label" for="password">Mot de passe</label>
+            </div>
+            <div class="action">
+                <input type="submit" class="action-button" id="divAdd" value="S'inscrire">
+            </div>
+        </div>
     </div>
 </form>
+

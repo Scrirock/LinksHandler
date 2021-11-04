@@ -8,9 +8,27 @@ html {
     font-size: 62.5%;
 }
 
+html, body{
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 body {
     width: 100%;
     font-size: 2rem;
+}
+
+nav{
+    background-color: #1E90FF;
+    height: 105px;
+}
+
+i{
+    cursor: pointer;
 }
 
 nav, .icon{
@@ -19,15 +37,29 @@ nav, .icon{
 }
 
 nav i{
-    font-size: 5rem;
-    margin: 1rem;
-    color: blue;
-    cursor: pointer;
+    margin: 2rem;
+    padding: 2rem;
+    font-size: 3.5rem;
+    color: #eeeeee;
+    text-align: center;
+}
+
+.userName{
+    color: #1E90FF;
+}
+
+#hiddenText{
+    font-size: 2rem;
+    color: #1E90FF;
+}
+
+nav i:hover #hiddenText{
+    color: #eeeeee;
 }
 
 a{
     text-decoration: none;
-    color: blue;
+    color: #1E90FF;
 }
 
 #containerHomePage{
@@ -60,29 +92,36 @@ a{
 
 h1{
     text-align: center;
+    text-decoration: underline #1E90FF;
 }
 
 .buttonMenu{
     margin: 2rem;
     padding: 2rem;
-    border: 1px solid blue;
+    height: 65px;
+    border: 1px solid #eeeeee;
+    transition-duration: .4s;
+    color: #eeeeee;
+}
+
+.buttonMenu:hover{
+    box-shadow: 0 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    font-size: 2.1rem;
 }
 
 .delButton{
     color: red;
-    cursor: pointer;
 }
 
 .editButton{
     color: blue;
-    cursor: pointer;
 }
 
 #containerEdit{
     margin: 2rem;
 }
 
-#divEdit, #divAdd{
+#divEdit{
     display: inline-block;
     padding: 1.5rem;
     border: 1px solid black;
@@ -96,4 +135,212 @@ h1{
 #graph{
     width: 400px;
     height: 400px;
+}
+
+#footer{
+    background-color: #1E90FF;
+    margin: 0;
+    padding: 2rem;
+    color: #eeeeee;
+}
+
+.card {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 425px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.25);
+    padding: 0.75rem;
+}
+
+.card-form {
+    padding: 2rem 1rem 0;
+}
+
+.input {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    padding-left: 8px;
+}
+
+.textarea {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    padding-left: 8px;
+}
+
+.select-label{
+    color: #8597a3;
+}
+
+.input-label {
+    color: #8597a3;
+    position: absolute;
+    transition: 0.25s ease;
+}
+
+.input-field {
+    border: 0;
+    z-index: 1;
+    background-color: transparent;
+    border-bottom: 2px solid #eee;
+    font: inherit;
+    font-size: 2rem;
+    padding: 0.25rem 0;
+}
+.input-field:focus, .input-field:valid {
+    outline: 0;
+    border-bottom-color: #1E90FF;
+}
+.input-field:focus + .input-label, .input-field:valid + .input-label {
+    color: #1E90FF;
+    transform: translateY(-2.5rem);
+}
+
+.action {
+    margin-top: 2rem;
+}
+
+.action-button {
+    font: inherit;
+    font-size: 2rem;
+    padding: 1em;
+    width: 100%;
+    font-weight: 500;
+    background-color: #1E90FF;
+    border-radius: 6px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+.action-button:focus {
+    outline: 0;
+}
+
+label.field {
+    border-radius: 2px;
+    color: #8597a3;
+    display: block;
+    max-width: 300px;
+    padding: 8px;
+    opacity: 0;
+    position: relative;
+    transition-property: opacity;
+    z-index: 1;
+}
+label.field span {
+    color: inherit;
+    display: block;
+    font-size: 2rem;
+    height: 20px;
+    line-height: 20px;
+    left: 9px;
+    pointer-events: none;
+    position: absolute;
+    top: 32px;
+    transform: scale(1) translateY(0);
+    transition-property: color, font-size, top;
+    z-index: 1;
+}
+label.field span.required::after {
+    color: inherit;
+    content: "*";
+    display: block;
+    height: 20px;
+    left: -20px;
+    line-height: 20px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 20px;
+}
+.error label.field span {
+    color: #F02318;
+}
+label.field .psuedo_select {
+    background: rgba(255, 255, 255, 0);
+    position: relative;
+    border-color: #8597a3;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    color: #8597a3;
+    cursor: pointer;
+    font-size: 20px;
+    height: 24px;
+    line-height: 24px;
+    margin: 24px 32px 0 0;
+    min-width: 250px;
+    padding-top: 24px;
+    outline: 0;
+    z-index: 1;
+}
+label.field .psuedo_select::after {
+    background: url("data:image/svg+xml;utf8,<svg fill='#666' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'> <path d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/> <path d='M0-.75h24v24H0z' fill='none'/> </svg>"), no-repeat;
+    content: "";
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition-property: background;
+}
+label.field .psuedo_select .selected {
+    height: 24px;
+    left: 1px;
+    line-height: 24px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateY(24px);
+    transition-property: opacity, transform;
+    will-change: transform;
+}
+label.field .psuedo_select ul {
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    display: block;
+    height: 0;
+    list-style: none;
+    margin-top: 2px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 1px;
+    pointer-events: none;
+    transition-property: height, opacity;
+    width: 100%;
+    z-index: 2;
+}
+label.field .psuedo_select ul li {
+    height: 32px;
+    padding: 8px 4px;
+}
+label.field .deselect {
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+}
+label.field.focused {
+    color: #1E90FF;
+}
+label.field.focused .psuedo_select {
+    border-color: #1E90FF;
+}
+label.field.focused .psuedo_select::after {
+    background: url("data:image/svg+xml;utf8,<svg fill='#007BED' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'> <path d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/> <path d='M0-.75h24v24H0z' fill='none'/> </svg>"), no-repeat;
+}
+label.field.focused .psuedo_select ul {
+    opacity: 1;
+    pointer-events: all;
 }
