@@ -41,7 +41,14 @@ class LinkManager{
      * @return array
      */
     public function getLink(): array{
-        $request = DB::getRepresentative()->prepare("SELECT * FROM prefix_link");
+        $request = DB::getRepresentative()->prepare("SELECT 
+                                                                l.id as linkId, u.id as userId,
+                                                                fk_user, href, title, target, name, timeClicked,
+                                                                nom, prenom, mail, pass       
+                                                            FROM prefix_link as l
+                                                            INNER JOIN prefix_user as u
+                                                                ON l.fk_user = u.id
+                                                            ");
         $request->execute();
         return $request->fetchAll();
     }
@@ -82,7 +89,7 @@ class LinkManager{
         $request->execute();
     }
 
-    public function getOneLink($rawId){
+    public function getOneLink($rawId) {
         $request = DB::getRepresentative()->prepare("SELECT * FROM prefix_link WHERE id = :id");
         $request->bindParam(":id", $rawId);
         $request->execute();
@@ -98,7 +105,8 @@ class LinkManager{
     }
 
     public function addOne($linkId){
-        $timeClicked = $this->getOneLink($linkId)['timeClicked'];
+        $requestClick = $this->getOneLink($linkId);
+        $timeClicked = $requestClick['timeClicked'];
         $timeClickedAndOne = $timeClicked + 1;
 
         $request = DB::getRepresentative()->prepare("
