@@ -72,7 +72,6 @@ a{
 .oneLink{
     display: flex;
     flex-flow: column nowrap;
-    border: 1px solid black;
     margin: 2.5rem;
 }
 
@@ -83,11 +82,21 @@ a{
 }
 
 .connexionForm{
-    margin: 5rem;
+    display: block;
+    margin: 5rem auto;
 }
 
-.connexionForm div, #footer{
-    margin: 2rem;
+#contactButton{
+    cursor: pointer;
+}
+
+#statContainer p{
+    line-height: 4.5rem;
+}
+
+#inscription{
+    display: block;
+    text-align: center;
 }
 
 h1{
@@ -133,8 +142,9 @@ h1{
 }
 
 #graph{
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
+    margin: 7rem auto;
 }
 
 #footer{

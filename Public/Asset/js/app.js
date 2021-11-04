@@ -151,9 +151,6 @@ const contactContainer = document.querySelector("#containerContact");
 function contactClick() {
     $(document).ready(() => {
         $("#contactButton").click(function (e) {
-            editContainer.innerHTML = "";
-            addContainer.innerHTML = "";
-            contactContainer.innerHTML = "";
             contactContainer.innerHTML = `
                     <div class="card">
                         <div class="card-form">
