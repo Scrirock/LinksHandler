@@ -129,7 +129,12 @@ function addButtonClick() {
         $("#divAdd").click(function () {
             const link = document.querySelector('input[name="link"]').value;
             const title = document.querySelector('input[name="title"]').value;
-            const target = document.querySelector('select[name="target"]').value;
+            const selected = document.querySelector('.selected').innerHTML;
+            const optionTarget = document.querySelectorAll('.option');
+            let target = "_self";
+            for (let i = 0; i < optionTarget.length; i++){
+                if (optionTarget[i].innerHTML === selected) target = optionTarget[i].dataset.value;
+            }
             $.ajax({
                 type: "POST",
                 url: '../../api/homePageAPI.php',
